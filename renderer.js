@@ -28,5 +28,23 @@ ws.onmessage = (event) => {
 
 const savebtn = document.getElementById('save');
 savebtn.addEventListener('click', () => {
-    ws.send(document.getElementById('id').value+"&"+document.getElementById('details').value+"&"+document.getElementById("state").value+"&"+document.getElementById('largeimgkey').value+"&"+document.getElementById("largeimgtext").value);
+ ws.send(document.getElementById('id').value+"&"+document.getElementById('details').value+"&"+document.getElementById("state").value+"&"+document.getElementById('largeimgkey').value+"&"+document.getElementById("largeimgtext").value+"&"+document.getElementById("Button1txt").value+"&"+document.getElementById("Button1url").value+"&"+document.getElementById("Button2txt").value+"&"+document.getElementById("Button2url").value);
+});
+
+document.getElementById('btn1').addEventListener('click', () => {
+    document.getElementById('Button1txt').disabled = document.getElementById('Button1txt').disabled ? false : true;    
+    document.getElementById('Button1url').disabled = document.getElementById('Button1url').disabled ? false : true; 
+    if(document.getElementById('Button1txt').disabled) {
+        document.getElementById('Button1txt').value = "";
+        document.getElementById('Button1url').value = "";
+    }
+});
+
+document.getElementById('btn2').addEventListener('click', () => {
+    document.getElementById('Button2txt').disabled = document.getElementById('Button2txt').disabled ? false : true;    
+    document.getElementById('Button2url').disabled = document.getElementById('Button2url').disabled ? false : true; 
+    if(document.getElementById('Button2txt').disabled) {
+        document.getElementById('Button2txt').value = "";
+        document.getElementById('Button2url').value = "";
+    }
 });

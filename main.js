@@ -36,14 +36,20 @@ server.on('connection', (socket) => {
   socket.on('message', (message) => {
     let array = message.toString().split('&');
     console.log(message.toString().split('&'));
+    console.log(array[0],array[1],array[2],array[3],array[4],array[5],array[6],array[7],array[8]);
     rpcclient.on('ready', () => {
-      rpcclient.setActivity({
+      var rpcjson = {
         details: array[1],
         state: array[2],
         largeImageKey: array[3],
         largeImageText: array[4],
-        startTimestamp: new Date()
-      });
+        startTimestamp: new Date(),
+      };
+      if(array[8]) rpcjson.buttons = [{ label: array[5], url: array[6]},{ label: array[7], url: array[8] }];
+      else if(array[6]) {
+        
+        rpcjson.buttons = [{ label: array[5], url: array[6] }];}
+      rpcclient.setActivity(rpcjson);
       socket.send("Client: ready");
       nofy("Discord RPC", "Discord RPC is ready");
     });
@@ -71,7 +77,7 @@ function createWindow () {
     accelerator: 'CMD+QorAlt+F4'
   }));
   win.setMenu(menu)
-  //win.webContents.openDevTools()
+  win.webContents.openDevTools()
   win.loadFile('index.html')
 }
 
