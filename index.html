@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <link href="./styles.css" rel="stylesheet">
+    <title>Discord RPC!</title>
+  </head>
+  <body>
+    <center>
+      <div class="mb-3">
+      <input type="number" class="form-control" name="id" id="id" placeholder="Application id" required><br><br>
+      <input type="text" class="form-control"  name="details" id="details" placeholder="Details" required><br><br>
+      <input type="text" class="form-control"  name="state" id="state" placeholder="State" required><br><br>
+      <input type="text" class="form-control"  name="largeimgkey" id="largeimgkey" placeholder="Large Image Key" required><br><br>
+      <input type="text" class="form-control"  name="largeimgtext" id="largeimgtext" placeholder="Large Image Text" required><br><br>
+      <button class="form-btn" type="submit" id="save">Save</button>
+    </div>
+    </center>
+    <span id="status">Waiting...</span>
+    <footer>
+      <button id="debug">debug</button>
+      <div id="debug-info" hidden>
+      Node : <span id="node-version"></span><br>
+      Chromium : <span id="chrome-version"></span><br>
+      Electron : <span id="electron-version"></span><br>
+    </div>
+    </footer>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
