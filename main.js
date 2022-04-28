@@ -10,7 +10,17 @@ require('update-electron-app')({
   updateInterval: '1 hour',
   logger: require('electron-log')
 })
-
+const electronInstaller = require('electron-winstaller');
+try {
+   electronInstaller.createWindowsInstaller({
+    appDirectory: './build/win-unpacked',
+    authors: 'Cenap Yüce.',
+    exe: 'discord-rpc.exe'
+  });
+  console.log('It worked!');
+} catch (e) {
+  console.log(`No dice: ${e.message}`);
+}
 let nofy = function(title,msg)  {
   new Notification({
      title: title,
